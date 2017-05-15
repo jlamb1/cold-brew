@@ -42,7 +42,6 @@ router.get('/', function(req, res) {
     
     .post(function(req, res) {
 
-        var hapikey = "HAPI_KEY_HS";
 
 var http = require('https');
 var fs = require('fs');
@@ -55,7 +54,7 @@ var put_data = JSON.stringify({
 // An object of options to indicate where to put to
 var put_options = {
     hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/4483664102/cells/4?hapikey=" + hapikey,
+    path: "/hubdb/api/v1/tables/105070/rows/4483664102/cells/4?hapikey=" + HAPI_KEY_HS,
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -86,7 +85,6 @@ var put_req = http.request(put_options, function(res) {
     
     .post(function(req, res) {
 
-        var hapikey = "HAPI_KEY_HS";
 
 var http = require('https');
 var fs = require('fs');
@@ -99,7 +97,7 @@ var put_data = JSON.stringify({
 // An object of options to indicate where to put to
 var put_options = {
     hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/4483664102/cells/4?hapikey=" + hapikey,
+    path: "/hubdb/api/v1/tables/105070/rows/4483664102/cells/4?hapikey=" + HAPI_KEY_HS,
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -130,7 +128,6 @@ var put_req = http.request(put_options, function(res) {
     
     .post(function(req, res) {
 
-        var hapikey = "HAPI_KEY_HS";
 
 var http = require('https');
 var fs = require('fs');
@@ -143,7 +140,7 @@ var put_data = JSON.stringify({
 // An object of options to indicate where to put to
 var put_options = {
     hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5104788209/cells/4?hapikey=" + hapikey,
+    path: "/hubdb/api/v1/tables/105070/rows/5104788209/cells/4?hapikey=" + HAPI_KEY_HS,
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -174,8 +171,6 @@ var put_req = http.request(put_options, function(res) {
     
     .post(function(req, res) {
 
-        var hapikey = "HAPI_KEY_HS";
-
 var http = require('https');
 var fs = require('fs');
 
@@ -187,7 +182,7 @@ var put_data = JSON.stringify({
 // An object of options to indicate where to put to
 var put_options = {
     hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5104788209/cells/4?hapikey=" + hapikey,
+    path: "/hubdb/api/v1/tables/105070/rows/5104788209/cells/4?hapikey=" + HAPI_KEY_HS,
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -218,8 +213,6 @@ var put_req = http.request(put_options, function(res) {
     
     .post(function(req, res) {
 
-        var hapikey = "HAPI_KEY_HS";
-
 var http = require('https');
 var fs = require('fs');
 
@@ -231,7 +224,7 @@ var put_data = JSON.stringify({
 // An object of options to indicate where to put to
 var put_options = {
     hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5105198498/cells/4?hapikey=" + hapikey,
+    path: "/hubdb/api/v1/tables/105070/rows/5105198498/cells/4?hapikey=" + HAPI_KEY_HS,
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -262,8 +255,6 @@ var put_req = http.request(put_options, function(res) {
     
     .post(function(req, res) {
 
-        var hapikey = "HAPI_KEY_HS";
-
 var http = require('https');
 var fs = require('fs');
 
@@ -275,7 +266,7 @@ var put_data = JSON.stringify({
 // An object of options to indicate where to put to
 var put_options = {
     hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5105198498/cells/4?hapikey=" + hapikey,
+    path: "/hubdb/api/v1/tables/105070/rows/5105198498/cells/4?hapikey=" + HAPI_KEY_HS,
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -307,8 +298,6 @@ var put_req = http.request(put_options, function(res) {
     
     .post(function(req, res) {
 
-        var hapikey = "HAPI_KEY_HS";
-
 var http = require('https');
 var fs = require('fs');
 
@@ -320,7 +309,7 @@ var put_data = JSON.stringify({
 // An object of options to indicate where to put to
 var put_options = {
     hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5105198728/cells/4?hapikey=" + hapikey,
+    path: "/hubdb/api/v1/tables/105070/rows/5105198728/cells/4?hapikey=" + HAPI_KEY_HS,
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -352,8 +341,6 @@ var put_req = http.request(put_options, function(res) {
     
     .post(function(req, res) {
 
-        var hapikey = "HAPI_KEY_HS";
-
 var http = require('https');
 var fs = require('fs');
 
@@ -365,7 +352,7 @@ var put_data = JSON.stringify({
 // An object of options to indicate where to put to
 var put_options = {
     hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5105198728/cells/4?hapikey=" + hapikey,
+    path: "/hubdb/api/v1/tables/105070/rows/5105198728/cells/4?hapikey=" + HAPI_KEY_HS,
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
