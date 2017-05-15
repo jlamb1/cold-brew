@@ -54,7 +54,7 @@ var put_data = JSON.stringify({
 // An object of options to indicate where to put to
 var put_options = {
     hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/4483664102/cells/4?hapikey=HAPI_KEY_HS",
+    path: "/hubdb/api/v1/tables/105070/rows/4483664102/cells/4?hapikey=" + "HAPI_KEY_HS",
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
