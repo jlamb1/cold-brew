@@ -76,7 +76,7 @@ var put_req = http.request(put_options, function(res) {
             put_req.end();
             
 
-            res.json({ message: 'Tap updated!' });
+            res.json({message: res.statusCode});
         });
 
 // Tap1No
@@ -120,8 +120,8 @@ var put_req = http.request(put_options, function(res) {
             put_req.end();
             
 
-            res.json({ message: 'Tap updated!' });
-        });    
+            res.json({message: res.statusCode});
+        });  
     
 // Tap2Yes
 // ----------------------------------------------------
@@ -164,8 +164,8 @@ var put_req = http.request(put_options, function(res) {
             put_req.end();
             
 
-            res.json({ message: 'Tap updated!' });
-        });  
+            res.json({message: res.statusCode});
+        });
 
 // Tap2No
 // ----------------------------------------------------
@@ -208,8 +208,8 @@ var put_req = http.request(put_options, function(res) {
             put_req.end();
             
 
-            res.json({ message: 'Tap updated!' });
-        });  
+            res.json({message: res.statusCode});
+        });
 
 // Tap3Yes
 // ----------------------------------------------------
@@ -252,8 +252,8 @@ var put_req = http.request(put_options, function(res) {
             put_req.end();
             
 
-            res.json({ message: 'Tap updated!' });
-        });  
+            res.json({message: res.statusCode});
+        });
 
 // Tap3no
 // ----------------------------------------------------
@@ -296,8 +296,8 @@ var put_req = http.request(put_options, function(res) {
             put_req.end();
             
 
-            res.json({ message: 'Tap updated!' });
-        });      
+            res.json({message: res.statusCode});
+        });    
 
 
 // Tap4yes
@@ -341,8 +341,8 @@ var put_req = http.request(put_options, function(res) {
             put_req.end();
             
 
-            res.json({ message: 'Tap updated!' });
-        });   
+            res.json({message: res.statusCode});
+        }); 
 
 
 // Tap4no
@@ -386,8 +386,8 @@ var put_req = http.request(put_options, function(res) {
             put_req.end();
             
 
-            res.json({ message: 'Tap updated!' });
-        });       
+            res.json({message: res.statusCode});
+        });     
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
