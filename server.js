@@ -8,6 +8,11 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
+// new variables
+var put_data = "";
+var setRow = "";
+var hapikey = process.env.HAPI_KEY_HS;
+
 
 
 // configure app to use bodyParser()
@@ -52,367 +57,161 @@ app.use(function (req, res, next) {
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
+    res.json({ message: 'hooray! welcome to my api!' });   
 });
+
+
+// Basic update function
+// ----------------------------------------------------
+
+function runApi(req, res){
+
+var http = require('https');
+var fs = require('fs'); 
+
+  
+    // An object of options to indicate where to put to
+var put_options = {
+    hostname: "api.hubapi.com",
+    path: "/hubdb/api/v1/tables/105070/rows/" + setRow + "/cells/4?hapikey=" + hapikey,
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Content-Length": Buffer.byteLength(put_data),
+      "User-Agent": "Mozilla/5.0"
+    }
+};
+
+// Set up the request
+var put_req = http.request(put_options, function(res) {
+    console.log("Status: " + res.statusCode);
+    res.on('data', function (chunk) {
+        console.log('Response: ' + chunk );
+    });
+});
+            
+            put_req.write(put_data);
+            put_req.end();
+            
+}  
+
 
 // more routes for our API will happen here
 
 // Tap1Yes
 // ----------------------------------------------------
- router.route('/tap1yes')
+router.route('/tap1yes')
+ 
+.post(function(req, res) {
 
-    
-    .post(function(req, res) {
+put_data = JSON.stringify({"value":"yes"});
 
+setRow = "4483664102";
 
-var http = require('https');
-var fs = require('fs');
-
-var hapikey = process.env.HAPI_KEY_HS
-
-var put_data = JSON.stringify({
-    "value":"yes"
+runApi();
+res.json({message: res.statusCode});
 });
 
 
-// An object of options to indicate where to put to
-var put_options = {
-    hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/4483664102/cells/4?hapikey=" + hapikey,
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "Content-Length": Buffer.byteLength(put_data),
-      "User-Agent": "Mozilla/5.0"
-    }
-};
-
-// Set up the request
-var put_req = http.request(put_options, function(res) {
-    console.log("Status: " + res.statusCode);
-    res.on('data', function (chunk) {
-        console.log('Response: ' + chunk );
-    });
-});
-            
-            put_req.write(put_data);
-            put_req.end();
-            
-
-            res.json({message: res.statusCode});
-        });
 
 // Tap1No
 // ----------------------------------------------------
- router.route('/tap1no')
+router.route('/tap1no')
+   
+.post(function(req, res) {
 
-    
-    .post(function(req, res) {
+put_data = JSON.stringify({"value":"no"});
 
+setRow = "4483664102";
 
-var http = require('https');
-var fs = require('fs');
-
-var hapikey = process.env.HAPI_KEY_HS
-
-var put_data = JSON.stringify({
-    "value":"no"
-});
-
-
-// An object of options to indicate where to put to
-var put_options = {
-    hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/4483664102/cells/4?hapikey=" + hapikey,
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "Content-Length": Buffer.byteLength(put_data),
-      "User-Agent": "Mozilla/5.0"
-    }
-};
-
-// Set up the request
-var put_req = http.request(put_options, function(res) {
-    console.log("Status: " + res.statusCode);
-    res.on('data', function (chunk) {
-        console.log('Response: ' + chunk );
-    });
-});
-            
-            put_req.write(put_data);
-            put_req.end();
-            
-
-            res.json({message: res.statusCode});
-        });  
+runApi();
+res.json({message: res.statusCode});
+});  
     
 // Tap2Yes
 // ----------------------------------------------------
- router.route('/tap2yes')
+router.route('/tap2yes')
+   
+.post(function(req, res) {
 
-    
-    .post(function(req, res) {
+put_data = JSON.stringify({"value":"yes"});
 
+setRow = "5104788209";
 
-var http = require('https');
-var fs = require('fs');
-
-var hapikey = process.env.HAPI_KEY_HS
-
-var put_data = JSON.stringify({
-    "value":"yes"
-});
-
-
-// An object of options to indicate where to put to
-var put_options = {
-    hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5104788209/cells/4?hapikey=" + hapikey,
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "Content-Length": Buffer.byteLength(put_data),
-      "User-Agent": "Mozilla/5.0"
-    }
-};
-
-// Set up the request
-var put_req = http.request(put_options, function(res) {
-    console.log("Status: " + res.statusCode);
-    res.on('data', function (chunk) {
-        console.log('Response: ' + chunk );
-    });
-});
-            
-            put_req.write(put_data);
-            put_req.end();
-            
-
-            res.json({message: res.statusCode});
-        });
+runApi();
+res.json({message: res.statusCode});
+}); 
 
 // Tap2No
 // ----------------------------------------------------
- router.route('/tap2no')
+router.route('/tap2no')
+   
+.post(function(req, res) {
 
-    
-    .post(function(req, res) {
+put_data = JSON.stringify({"value":"no"});
 
-var http = require('https');
-var fs = require('fs');
+setRow = "5104788209";
 
-var hapikey = process.env.HAPI_KEY_HS
-
-var put_data = JSON.stringify({
-    "value":"no"
-});
-
-
-// An object of options to indicate where to put to
-var put_options = {
-    hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5104788209/cells/4?hapikey=" + hapikey,
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "Content-Length": Buffer.byteLength(put_data),
-      "User-Agent": "Mozilla/5.0"
-    }
-};
-
-// Set up the request
-var put_req = http.request(put_options, function(res) {
-    console.log("Status: " + res.statusCode);
-    res.on('data', function (chunk) {
-        console.log('Response: ' + chunk );
-    });
-});
-            
-            put_req.write(put_data);
-            put_req.end();
-            
-
-            res.json({message: res.statusCode});
-        });
+runApi();
+res.json({message: res.statusCode});
+});  
 
 // Tap3Yes
 // ----------------------------------------------------
- router.route('/tap3yes')
+router.route('/tap3yes')
+   
+.post(function(req, res) {
 
-    
-    .post(function(req, res) {
+put_data = JSON.stringify({"value":"yes"});
 
-var http = require('https');
-var fs = require('fs');
+setRow = "5105198498";
 
-var hapikey = process.env.HAPI_KEY_HS
-
-var put_data = JSON.stringify({
-    "value":"yes"
-});
-
-
-// An object of options to indicate where to put to
-var put_options = {
-    hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5105198498/cells/4?hapikey=" + hapikey,
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "Content-Length": Buffer.byteLength(put_data),
-      "User-Agent": "Mozilla/5.0"
-    }
-};
-
-// Set up the request
-var put_req = http.request(put_options, function(res) {
-    console.log("Status: " + res.statusCode);
-    res.on('data', function (chunk) {
-        console.log('Response: ' + chunk );
-    });
-});
-            
-            put_req.write(put_data);
-            put_req.end();
-            
-
-            res.json({message: res.statusCode});
-        });
+runApi();
+res.json({message: res.statusCode});
+});  
 
 // Tap3no
 // ----------------------------------------------------
- router.route('/tap3no')
+router.route('/tap3no')
+   
+.post(function(req, res) {
 
-    
-    .post(function(req, res) {
+put_data = JSON.stringify({"value":"no"});
 
-var http = require('https');
-var fs = require('fs');
+setRow = "5105198498";
 
-var hapikey = process.env.HAPI_KEY_HS
-
-var put_data = JSON.stringify({
-    "value":"no"
+runApi();
+res.json({message: res.statusCode});
 });
-
-
-// An object of options to indicate where to put to
-var put_options = {
-    hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5105198498/cells/4?hapikey=" + hapikey,
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "Content-Length": Buffer.byteLength(put_data),
-      "User-Agent": "Mozilla/5.0"
-    }
-};
-
-// Set up the request
-var put_req = http.request(put_options, function(res) {
-    console.log("Status: " + res.statusCode);
-    res.on('data', function (chunk) {
-        console.log('Response: ' + chunk );
-    });
-});
-            
-            put_req.write(put_data);
-            put_req.end();
-            
-
-            res.json({message: res.statusCode});
-        });    
-
 
 // Tap4yes
 // ----------------------------------------------------
- router.route('/tap4yes')
+router.route('/tap4yes')
+   
+.post(function(req, res) {
 
-    
-    .post(function(req, res) {
+put_data = JSON.stringify({"value":"yes"});
 
-var http = require('https');
-var fs = require('fs');
+setRow = "5105198728";
 
-var hapikey = process.env.HAPI_KEY_HS
-
-var put_data = JSON.stringify({
-    "value":"yes"
+runApi();
+res.json({message: res.statusCode});
 });
-
-
-// An object of options to indicate where to put to
-var put_options = {
-    hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5105198728/cells/4?hapikey=" + hapikey,
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "Content-Length": Buffer.byteLength(put_data),
-      "User-Agent": "Mozilla/5.0"
-    }
-};
-
-// Set up the request
-var put_req = http.request(put_options, function(res) {
-    console.log("Status: " + res.statusCode);
-    res.on('data', function (chunk) {
-        console.log('Response: ' + chunk );
-    });
-});
-            
-            put_req.write(put_data);
-            put_req.end();
-            
-
-            res.json({message: res.statusCode});
-        }); 
-
 
 // Tap4no
 // ----------------------------------------------------
- router.route('/tap4no')
+router.route('/tap4no')
+   
+.post(function(req, res) {
 
-    
-    .post(function(req, res) {
+put_data = JSON.stringify({"value":"no"});
 
-var http = require('https');
-var fs = require('fs');
+setRow = "5105198728";
 
-var hapikey = process.env.HAPI_KEY_HS
+runApi();
+res.json({message: res.statusCode});
+}); 
 
-var put_data = JSON.stringify({
-    "value":"no"
-});
-
-
-// An object of options to indicate where to put to
-var put_options = {
-    hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/5105198728/cells/4?hapikey=" + hapikey,
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "Content-Length": Buffer.byteLength(put_data),
-      "User-Agent": "Mozilla/5.0"
-    }
-};
-
-// Set up the request
-var put_req = http.request(put_options, function(res) {
-    console.log("Status: " + res.statusCode);
-    res.on('data', function (chunk) {
-        console.log('Response: ' + chunk );
-    });
-});
-            
-            put_req.write(put_data);
-            put_req.end();
-            
-
-            res.json({message: res.statusCode});
-        });     
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
