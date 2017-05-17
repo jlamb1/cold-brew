@@ -11,6 +11,8 @@ var bodyParser = require('body-parser');
 // new variables
 var put_data = "";
 var setRow = "";
+var setCell = "";
+var getTimestamp = "";
 var hapikey = process.env.HAPI_KEY_HS;
 
 
@@ -73,7 +75,7 @@ var fs = require('fs');
     // An object of options to indicate where to put to
 var put_options = {
     hostname: "api.hubapi.com",
-    path: "/hubdb/api/v1/tables/105070/rows/" + setRow + "/cells/4?hapikey=" + hapikey,
+    path: "/hubdb/api/v1/tables/105070/rows/" + setRow + "/cells/" + setCell + "?hapikey=" + hapikey,
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -108,8 +110,20 @@ put_data = JSON.stringify({"value":"yes"});
 
 setRow = "4483664102";
 
+setCell = 4;
+
 runApi();
 res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+put_data = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
+
+runApi();
+res.json({message: res.statusCode});
+
 });
 
 
@@ -123,6 +137,17 @@ router.route('/tap1no')
 put_data = JSON.stringify({"value":"no"});
 
 setRow = "4483664102";
+
+setCell = 4;
+
+runApi();
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+put_data = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
 
 runApi();
 res.json({message: res.statusCode});
@@ -138,6 +163,17 @@ put_data = JSON.stringify({"value":"yes"});
 
 setRow = "5104788209";
 
+setCell = 4;
+
+runApi();
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+put_data = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
+
 runApi();
 res.json({message: res.statusCode});
 }); 
@@ -151,6 +187,17 @@ router.route('/tap2no')
 put_data = JSON.stringify({"value":"no"});
 
 setRow = "5104788209";
+
+setCell = 4;
+
+runApi();
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+put_data = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
 
 runApi();
 res.json({message: res.statusCode});
@@ -166,6 +213,17 @@ put_data = JSON.stringify({"value":"yes"});
 
 setRow = "5105198498";
 
+setCell = 4;
+
+runApi();
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+put_data = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
+
 runApi();
 res.json({message: res.statusCode});
 });  
@@ -179,6 +237,17 @@ router.route('/tap3no')
 put_data = JSON.stringify({"value":"no"});
 
 setRow = "5105198498";
+
+setCell = 4;
+
+runApi();
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+put_data = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
 
 runApi();
 res.json({message: res.statusCode});
@@ -194,6 +263,17 @@ put_data = JSON.stringify({"value":"yes"});
 
 setRow = "5105198728";
 
+setCell = 4;
+
+runApi();
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+put_data = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
+
 runApi();
 res.json({message: res.statusCode});
 });
@@ -207,6 +287,17 @@ router.route('/tap4no')
 put_data = JSON.stringify({"value":"no"});
 
 setRow = "5105198728";
+
+setCell = 4;
+
+runApi();
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+put_data = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
 
 runApi();
 res.json({message: res.statusCode});
