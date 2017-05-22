@@ -9,7 +9,7 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
 // new variables
-var put_data = "";
+var putData = "";
 var setRow = "";
 var setCell = "";
 var getTimestamp = "";
@@ -28,30 +28,19 @@ var port = process.env.PORT || 8080;        // set our port
 // =============================================================================
 var router = express.Router();              // get an instance of the express Router
 
-// middleware to use for all requests
-router.use(function(req, res, next) {
-    // do logging
-    console.log('Something is happening.');
-    next(); // make sure we go to the next routes and don't stop here
-});
-
 // Access-Control-Header-Origin middleware
 
 // Add headers
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'https://www.does2canhavecoldbrew.com');
 
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH');
 
     // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
 
     // Pass to next layer of middleware
     next();
@@ -59,7 +48,7 @@ app.use(function (req, res, next) {
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to my api!' });   
+    res.json({ message: 'API is running!' });   
 });
 
 
@@ -72,28 +61,28 @@ var http = require('https');
 var fs = require('fs'); 
 
   
-    // An object of options to indicate where to put to
-var put_options = {
+// An object of options to indicate where to put to
+var putOptions = {
     hostname: "api.hubapi.com",
     path: "/hubdb/api/v1/tables/105070/rows/" + setRow + "/cells/" + setCell + "?hapikey=" + hapikey,
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Content-Length": Buffer.byteLength(put_data),
+      "Content-Length": Buffer.byteLength(putData),
       "User-Agent": "Mozilla/5.0"
     }
 };
 
 // Set up the request
-var put_req = http.request(put_options, function(res) {
+var putReq = http.request(putOptions, function(res) {
     console.log("Status: " + res.statusCode);
     res.on('data', function (chunk) {
         console.log('Response: ' + chunk );
     });
 });
             
-            put_req.write(put_data);
-            put_req.end();
+            putReq.write(putData);
+            putReq.end();
             
 }  
 
@@ -106,22 +95,24 @@ router.route('/tap1yes')
  
 .post(function(req, res) {
 
-put_data = JSON.stringify({"value":"yes"});
+putData = JSON.stringify({"value":"yes"});
 
 setRow = "4483664102";
 
 setCell = 4;
 
 runApi();
+
 res.json({message: res.statusCode});
 
 getTimestamp = new Date().getTime() - 1.44e+7;
 
-put_data = JSON.stringify({"value": getTimestamp});
+putData = JSON.stringify({"value": getTimestamp});
 
 setCell = 9;
 
 runApi();
+
 res.json({message: res.statusCode});
 
 });
@@ -134,22 +125,24 @@ router.route('/tap1no')
    
 .post(function(req, res) {
 
-put_data = JSON.stringify({"value":"no"});
+putData = JSON.stringify({"value":"no"});
 
 setRow = "4483664102";
 
 setCell = 4;
 
 runApi();
+
 res.json({message: res.statusCode});
 
 getTimestamp = new Date().getTime() - 1.44e+7;
 
-put_data = JSON.stringify({"value": getTimestamp});
+putData = JSON.stringify({"value": getTimestamp});
 
 setCell = 9;
 
 runApi();
+
 res.json({message: res.statusCode});
 });  
     
@@ -159,22 +152,24 @@ router.route('/tap2yes')
    
 .post(function(req, res) {
 
-put_data = JSON.stringify({"value":"yes"});
+putData = JSON.stringify({"value":"yes"});
 
 setRow = "5104788209";
 
 setCell = 4;
 
 runApi();
+
 res.json({message: res.statusCode});
 
 getTimestamp = new Date().getTime() - 1.44e+7;
 
-put_data = JSON.stringify({"value": getTimestamp});
+putData = JSON.stringify({"value": getTimestamp});
 
 setCell = 9;
 
 runApi();
+
 res.json({message: res.statusCode});
 }); 
 
@@ -184,22 +179,24 @@ router.route('/tap2no')
    
 .post(function(req, res) {
 
-put_data = JSON.stringify({"value":"no"});
+putData = JSON.stringify({"value":"no"});
 
 setRow = "5104788209";
 
 setCell = 4;
 
 runApi();
+
 res.json({message: res.statusCode});
 
 getTimestamp = new Date().getTime() - 1.44e+7;
 
-put_data = JSON.stringify({"value": getTimestamp});
+putData = JSON.stringify({"value": getTimestamp});
 
 setCell = 9;
 
 runApi();
+
 res.json({message: res.statusCode});
 });  
 
@@ -209,22 +206,24 @@ router.route('/tap3yes')
    
 .post(function(req, res) {
 
-put_data = JSON.stringify({"value":"yes"});
+putData = JSON.stringify({"value":"yes"});
 
 setRow = "5105198498";
 
 setCell = 4;
 
 runApi();
+
 res.json({message: res.statusCode});
 
 getTimestamp = new Date().getTime() - 1.44e+7;
 
-put_data = JSON.stringify({"value": getTimestamp});
+putData = JSON.stringify({"value": getTimestamp});
 
 setCell = 9;
 
 runApi();
+
 res.json({message: res.statusCode});
 });  
 
@@ -234,22 +233,24 @@ router.route('/tap3no')
    
 .post(function(req, res) {
 
-put_data = JSON.stringify({"value":"no"});
+putData = JSON.stringify({"value":"no"});
 
 setRow = "5105198498";
 
 setCell = 4;
 
 runApi();
+
 res.json({message: res.statusCode});
 
 getTimestamp = new Date().getTime() - 1.44e+7;
 
-put_data = JSON.stringify({"value": getTimestamp});
+putData = JSON.stringify({"value": getTimestamp});
 
 setCell = 9;
 
 runApi();
+
 res.json({message: res.statusCode});
 });
 
@@ -259,22 +260,24 @@ router.route('/tap4yes')
    
 .post(function(req, res) {
 
-put_data = JSON.stringify({"value":"yes"});
+putData = JSON.stringify({"value":"yes"});
 
 setRow = "5105198728";
 
 setCell = 4;
 
 runApi();
+
 res.json({message: res.statusCode});
 
 getTimestamp = new Date().getTime() - 1.44e+7;
 
-put_data = JSON.stringify({"value": getTimestamp});
+putData = JSON.stringify({"value": getTimestamp});
 
 setCell = 9;
 
 runApi();
+
 res.json({message: res.statusCode});
 });
 
@@ -284,22 +287,24 @@ router.route('/tap4no')
    
 .post(function(req, res) {
 
-put_data = JSON.stringify({"value":"no"});
+putData = JSON.stringify({"value":"no"});
 
 setRow = "5105198728";
 
 setCell = 4;
 
 runApi();
+
 res.json({message: res.statusCode});
 
 getTimestamp = new Date().getTime() - 1.44e+7;
 
-put_data = JSON.stringify({"value": getTimestamp});
+putData = JSON.stringify({"value": getTimestamp});
 
 setCell = 9;
 
 runApi();
+
 res.json({message: res.statusCode});
 }); 
 
