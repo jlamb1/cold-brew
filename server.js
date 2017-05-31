@@ -344,6 +344,8 @@ router.route('/tap2name')
    
 .post(function(req, res) {
 
+updateName = req.body.name;     
+
 putData = JSON.stringify({"value":updateName});
 
 setRow = "5104788209";
@@ -371,6 +373,8 @@ router.route('/tap3name')
    
 .post(function(req, res) {
 
+updateName = req.body.name;     
+
 putData = JSON.stringify({"value":updateName});
 
 setRow = "5105198498";
@@ -397,6 +401,8 @@ res.json({message: res.statusCode});
 router.route('/tap4name')
    
 .post(function(req, res) {
+
+updateName = req.body.name;     
 
 putData = JSON.stringify({"value":updateName});
 
