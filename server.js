@@ -14,7 +14,7 @@ var setRow = "";
 var setCell = "";
 var getTimestamp = "";
 var hapikey = process.env.HAPI_KEY_HS;
-updateName = req.body.name;
+var updateName = req.body.name;
 
 
 
