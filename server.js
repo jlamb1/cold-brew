@@ -308,59 +308,6 @@ runApi();
 res.json({message: res.statusCode});
 }); 
 
-// Tap1 Name test
-// ---------------------------------------------------
-
-router.route('/tap1name')
- 
-.post(function(req, res) {
-
-//require Node modules
-
-var https = require('https');
-var querystring = require('querystring');
-
-// build the data object
-
-var postData = querystring.stringify({
-    'name': req.body.name
-});
-
-// set the post options, changing out the HUB ID and FORM GUID variables.
-
-var options = {
-    hostname: 'api.hubapi.com',
-    path: '/hubdb/api/v1/tables/105070/rows/4483664102/cells/2?hapikey=b6c17691-e9d1-46dc-b877-51447c2b3154',
-    method: 'PUT',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Length': postData.length
-    }
-}
-
-// set up the request
-
-var request = https.request(options, function(response){
-    console.log("Status: " + response.statusCode);
-    console.log("Headers: " + JSON.stringify(response.headers));
-    response.setEncoding('utf8');
-    response.on('data', function(chunk){
-        console.log('Body: ' + chunk)
-    });
-});
-
-request.on('error', function(e){
-    console.log("Problem with request " + e.message)
-});
-
-// post the data
-
-request.write(postData);
-request.end();
-
-
-});
-
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
