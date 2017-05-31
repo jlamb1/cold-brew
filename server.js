@@ -8,12 +8,13 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
-// new variables
+// global variables
 var putData = "";
 var setRow = "";
 var setCell = "";
 var getTimestamp = "";
 var hapikey = process.env.HAPI_KEY_HS;
+updateName = req.body.name;
 
 
 
@@ -314,8 +315,6 @@ router.route('/tap1name')
    
 .post(function(req, res) {
 
-updateName = req.body.name;
-
 putData = JSON.stringify({"value":updateName});
 
 setRow = "4483664102";
@@ -336,6 +335,89 @@ runApi();
 
 res.json({message: res.statusCode});
 }); 
+
+// Tap2name
+// ----------------------------------------------------
+router.route('/tap2name')
+   
+.post(function(req, res) {
+
+putData = JSON.stringify({"value":updateName});
+
+setRow = "5104788209";
+
+setCell = 2;
+
+runApi();
+
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+putData = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
+
+runApi();
+
+res.json({message: res.statusCode});
+}); 
+
+// Tap3name
+// ----------------------------------------------------
+router.route('/tap3name')
+   
+.post(function(req, res) {
+
+putData = JSON.stringify({"value":updateName});
+
+setRow = "5105198498";
+
+setCell = 2;
+
+runApi();
+
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+putData = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
+
+runApi();
+
+res.json({message: res.statusCode});
+}); 
+
+// Tap4name
+// ----------------------------------------------------
+router.route('/tap4name')
+   
+.post(function(req, res) {
+
+putData = JSON.stringify({"value":updateName});
+
+setRow = "5105198728";
+
+setCell = 2;
+
+runApi();
+
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+putData = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
+
+runApi();
+
+res.json({message: res.statusCode});
+}); 
+
+
 
 
 // REGISTER OUR ROUTES -------------------------------
