@@ -308,6 +308,35 @@ runApi();
 res.json({message: res.statusCode});
 }); 
 
+// Tap1name
+// ----------------------------------------------------
+router.route('/tap1name')
+   
+.post(function(req, res) {
+
+updateName = req.body.name;
+
+putData = JSON.stringify({"value":updateName});
+
+setRow = "4483664102";
+
+setCell = 2;
+
+runApi();
+
+res.json({message: res.statusCode});
+
+getTimestamp = new Date().getTime() - 1.44e+7;
+
+putData = JSON.stringify({"value": getTimestamp});
+
+setCell = 9;
+
+runApi();
+
+res.json({message: res.statusCode});
+}); 
+
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
