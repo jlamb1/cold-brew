@@ -14,7 +14,7 @@ var setRow = "";
 var setCell = "";
 var getTimestamp = "";
 var hapikey = process.env.HAPI_KEY_HS;
-var updateName = req.body.name;
+
 
 
 
@@ -314,6 +314,8 @@ res.json({message: res.statusCode});
 router.route('/tap1name')
    
 .post(function(req, res) {
+
+updateName = req.body.name;   
 
 putData = JSON.stringify({"value":updateName});
 
