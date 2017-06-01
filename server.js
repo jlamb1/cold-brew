@@ -436,3 +436,12 @@ app.use('/api', router);
 // =============================================================================
 app.listen(port);
 console.log('Server is running on port ' + port);
+
+
+// HEROKU CAFFEINE (keep dyno awake)
+// ----------------------------------------------------
+
+var http = require("http");
+setInterval(function() {
+    http.get("https://cold-brew.herokuapp.com/api");
+}, 300000); // every 5 minutes (300000)
