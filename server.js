@@ -58,7 +58,7 @@ router.get('/', function(req, res) {
 
 function runApi(req, res){
 
-const https = require('https');
+const http = require('http');
 var fs = require('fs'); 
 
   
@@ -75,7 +75,7 @@ var putOptions = {
 };
 
 // Set up the request
-var putReq = https.request(putOptions, function(res) {
+var putReq = http.request(putOptions, function(res) {
     console.log("Status: " + res.statusCode);
     res.on('data', function (chunk) {
         console.log('Response: ' + chunk );
@@ -438,10 +438,11 @@ app.listen(port);
 console.log('Server is running on port ' + port);
 
 
-// HEROKU CAFFEINE (keep dyno awake)
+/* HEROKU CAFFEINE (keep dyno awake)
 // ----------------------------------------------------
 
 var http = require("http");
 setInterval(function() {
     http.get("https://cold-brew.herokuapp.com/api");
 }, 300000); // every 5 minutes (300000)
+*/
