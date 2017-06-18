@@ -58,7 +58,7 @@ router.get('/', function(req, res) {
 
 function runApi(req, res){
 
-var http = require('https');
+const https = require('https');
 var fs = require('fs'); 
 
   
@@ -75,7 +75,7 @@ var putOptions = {
 };
 
 // Set up the request
-var putReq = http.request(putOptions, function(res) {
+var putReq = https.request(putOptions, function(res) {
     console.log("Status: " + res.statusCode);
     res.on('data', function (chunk) {
         console.log('Response: ' + chunk );
