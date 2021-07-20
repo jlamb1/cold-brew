@@ -52,7 +52,7 @@ router.get('/', function (req, res) {
 // ----------------------------------------------------
 
 function runApi (req, res) {
-  const http = require('http')
+  const http = require('https')
   var fs = require('fs')
 
   // An object of options to indicate where to put to
