@@ -79,6 +79,36 @@ function runApi (req, res) {
   putReq.end()
 }
 
+// Publish the changes
+// ----------------------------------------------------
+function publishChanges() {
+  const http = require('https')
+  var fs = require('fs')
+
+  // An object of options to indicate where to put to
+  var putOptions = {
+    hostname: 'api.hubapi.com',
+    path: '/hubdb/api/v2/tables/105070/publish?hapikey=' + hapikey,
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': Buffer.byteLength(putData),
+      'User-Agent': 'Mozilla/5.0'
+    }
+  }
+
+  // Set up the request
+  var putReq = http.request(putOptions, function (res) {
+    console.log('Status: ' + res.statusCode)
+    res.on('data', function (chunk) {
+      console.log('Response: ' + chunk)
+    })
+  })
+
+  putReq.write(putData)
+  putReq.end()
+}
+
 // more routes for our API will happen here
 
 // Tap1Yes
@@ -93,6 +123,7 @@ router.route('/tap1yes')
     setCell = 4
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -103,6 +134,7 @@ router.route('/tap1yes')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -119,6 +151,7 @@ router.route('/tap1no')
     setCell = 4
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -129,6 +162,7 @@ router.route('/tap1no')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -145,6 +179,7 @@ router.route('/tap2yes')
     setCell = 4
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -155,6 +190,7 @@ router.route('/tap2yes')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -171,6 +207,7 @@ router.route('/tap2no')
     setCell = 4
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -181,6 +218,7 @@ router.route('/tap2no')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -197,6 +235,7 @@ router.route('/tap3yes')
     setCell = 4
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -207,6 +246,7 @@ router.route('/tap3yes')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -223,6 +263,7 @@ router.route('/tap3no')
     setCell = 4
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -233,6 +274,7 @@ router.route('/tap3no')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -249,6 +291,7 @@ router.route('/tap4yes')
     setCell = 4
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -259,6 +302,7 @@ router.route('/tap4yes')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -275,6 +319,7 @@ router.route('/tap4no')
     setCell = 4
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -285,6 +330,7 @@ router.route('/tap4no')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -303,6 +349,7 @@ router.route('/tap1name')
     setCell = 2
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -313,6 +360,7 @@ router.route('/tap1name')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -331,6 +379,7 @@ router.route('/tap2name')
     setCell = 2
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -341,6 +390,7 @@ router.route('/tap2name')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -359,6 +409,7 @@ router.route('/tap3name')
     setCell = 2
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -369,6 +420,7 @@ router.route('/tap3name')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
@@ -387,6 +439,7 @@ router.route('/tap4name')
     setCell = 2
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
 
@@ -397,6 +450,7 @@ router.route('/tap4name')
     setCell = 9
 
     runApi()
+    publishChanges()
 
     res.json({ message: res.statusCode })
   })
